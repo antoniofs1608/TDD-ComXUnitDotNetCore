@@ -41,10 +41,12 @@ A realização de teste é muitas vezes negligenciada;
 ## **TDD e a implementação de softwares**
 * Construção de soluções de uma maneira que facilite a integração a ferramentas para a execução de testes unitários;
 * Codificação de teste unitários antes mesmo da implementação das partes que serão submetidas a análises -> evitando assim a elaboração de testes "viciados";
-* A implementação de uma funcionalidade segue um ciclo conhecido como Red-Green-Refactor (com a exeução dos testes unitários em todos os estágios)
-  1. RED = Write a test! thats fails
-     Teste elaborado antes mesmo da funcionalidade ter sido codificado (apenas a estrutura básica foi definida), de forma a ser evitar uma verificação "viciada"
-     Exemplo de definição de classe com funcionalidades ainda não implementadas:
+* A implementação de uma funcionalidade segue um ciclo conhecido como Red-Green-Refactor (com a exeução dos testes unitários em todos os estágios).  
+  
+  RED = Write a test! thats fails.
+  Teste elaborado antes mesmo da funcionalidade ter sido codificado (apenas a estrutura básica foi definida), de forma a ser evitar uma verificação "viciada".
+  Exemplo de definição de classe com funcionalidades ainda não implementadas:
+  
            namespace TesteNF.Utils
            {
              public static class TributacaoHelper
@@ -67,97 +69,65 @@ A realização de teste é muitas vezes negligenciada;
                }               
              }
            }
-  3. GREEN = Make the code work
-     Funcionalidade codificada da forma mais simples possível, de maneira a garantir a execução com sucesso dos testes.
-     Exemplo anterior com funcionalidade já implementada:
+
+  GREEN = Make the code work.
+  Funcionalidade codificada da forma mais simples possível, de maneira a garantir a execução com sucesso dos testes.
+  Exemplo anterior com funcionalidade já implementada:
      
-     using System.
+           using System.     
+           namespace TesteNF.Utils
+           {
+             public static class TributacaoHelper
+             {
+               public static double CalcularPIS(double valorBase)
+               {
+                 return Math.Round(valorBase * 0.65 / 100, 2);
+               }
+               public static double CalcularCONFINS(double valorBase)
+               {
+                 return Math.Round(valorBase * 3 / 100, 2);
+               }
+               public static double CalcularIRPJ(double valorBase)
+               {
+                 return Math.Round(valorBase * 1.5 / 100, 2);
+               }
+               public static double CalcularCSLL(double valorBase)
+               {
+                 return Math.Round(valorBase * 1 / 100, 2);
+               }               
+             }
+           }        
+
+  REFACTOR: Eliminate redundancy.
+  Eliminação de instruções duplicadas e eventuais melhorias no código.
      
-     namespace TesteNF.Utils
-     {
-       public static class TributacaoHelper
-       {
-         public static double CalcularPIS(double valorBase)
+         using System.
+         namespace TesteNF.Utils
          {
-           return Math.Round(valorBase * 0.65 / 100, 2);
+           public static class TributacaoHelper
+           {
+             private static double CalcularImposto(double valorBase, double aliquota)
+             {
+               return Math.Round(valorBase * aliquota / 100, 2);
+             }     
+             public static double CalcularPIS(double valorBase)
+             {
+               return CalcularImposto(valorBase, 0.65);
+             }
+             public static double CalcularCONFINS(double valorBase)
+             {
+               return CalcularImposto(valorBase, 3);
+             }
+             public static double CalcularIRPJ(double valorBase)
+             {
+               return CalcularImposto(valorBase, 1.5);
+             }
+             public static double CalcularCSLL(double valorBase)
+             {
+               return CalcularImposto(valorBase, 1);
+             }               
+           }
          }
-         public static double CalcularCONFINS(double valorBase)
-         {
-           return Math.Round(valorBase * 3 / 100, 2);
-         }
-         public static double CalcularIRPJ(double valorBase)
-         {
-           return Math.Round(valorBase * 1.5 / 100, 2);
-         }
-         public static double CalcularCSLL(double valorBase)
-         {
-           return Math.Round(valorBase * 1 / 100, 2);
-         }               
-       }
-     }        
-  5. REFACTOR: Eliminate redundancy
-     Eliminação de instruções duplicadas e eventuais melhorias no código.
-     using System.
-     namespace TesteNF.Utils
-     {
-       public static class TributacaoHelper
-       {
-         **private static double CalcularImposto(double valorBase, double aliquota)
-         {
-           return Math.Round(valorBase * aliquota / 100, 2);
-         }**     
-         public static double CalcularPIS(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 0.65);**
-         }
-         public static double CalcularCONFINS(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 3);**
-         }
-         public static double CalcularIRPJ(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 1.5);**
-         }
-         public static double CalcularCSLL(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 1);**
-         }               
-       }
-     }
-
-
-
-
-gdkgfldkkldfg
-
-
-     using System.
-     namespace TesteNF.Utils
-     {
-       public static class TributacaoHelper
-       {
-         **private static double CalcularImposto(double valorBase, double aliquota)
-         {
-           return Math.Round(valorBase * aliquota / 100, 2);
-         }**     
-         public static double CalcularPIS(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 0.65);**
-         }
-         public static double CalcularCONFINS(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 3);**
-         }
-         public static double CalcularIRPJ(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 1.5);**
-         }
-         public static double CalcularCSLL(double valorBase)
-         {
-           **return CalcularImposto(valorBase, 1);**
-         }               
-       }
-     }
 
 
 
