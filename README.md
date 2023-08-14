@@ -97,35 +97,67 @@ A realização de teste é muitas vezes negligenciada;
      }        
   5. REFACTOR: Eliminate redundancy
      Eliminação de instruções duplicadas e eventuais melhorias no código.
-           using System.
-           namespace TesteNF.Utils
-           {
-             public static class TributacaoHelper
-             {
-               **private static double CalcularImposto(double valorBase, double aliquota)
-               {
-                 return Math.Round(valorBase * aliquota / 100, 2);
-               }**     
-               public static double CalcularPIS(double valorBase)
-               {
-                 **return CalcularImposto(valorBase, 0.65);**
-               }
-               public static double CalcularCONFINS(double valorBase)
-               {
-                 **return CalcularImposto(valorBase, 3);**
-               }
-               public static double CalcularIRPJ(double valorBase)
-               {
-                 **return CalcularImposto(valorBase, 1.5);**
-               }
-               public static double CalcularCSLL(double valorBase)
-               {
-                 **return CalcularImposto(valorBase, 1);**
-               }               
-             }
-           }
+     using System.
+     namespace TesteNF.Utils
+     {
+       public static class TributacaoHelper
+       {
+         **private static double CalcularImposto(double valorBase, double aliquota)
+         {
+           return Math.Round(valorBase * aliquota / 100, 2);
+         }**     
+         public static double CalcularPIS(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 0.65);**
+         }
+         public static double CalcularCONFINS(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 3);**
+         }
+         public static double CalcularIRPJ(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 1.5);**
+         }
+         public static double CalcularCSLL(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 1);**
+         }               
+       }
+     }
 
 
+
+
+gdkgfldkkldfg
+
+
+     using System.
+     namespace TesteNF.Utils
+     {
+       public static class TributacaoHelper
+       {
+         **private static double CalcularImposto(double valorBase, double aliquota)
+         {
+           return Math.Round(valorBase * aliquota / 100, 2);
+         }**     
+         public static double CalcularPIS(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 0.65);**
+         }
+         public static double CalcularCONFINS(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 3);**
+         }
+         public static double CalcularIRPJ(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 1.5);**
+         }
+         public static double CalcularCSLL(double valorBase)
+         {
+           **return CalcularImposto(valorBase, 1);**
+         }               
+       }
+     }
 
 
 
