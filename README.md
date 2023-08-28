@@ -130,4 +130,5 @@ A realização de teste é muitas vezes negligenciada;
          }
 
 
+![image](https://github.com/antoniofs1608/TDD-ComXUnitDotNetCore/assets/43965969/e58a6494-b280-4c33-81f2-34aed5a719bc)
 
